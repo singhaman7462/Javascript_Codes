@@ -1,0 +1,101 @@
+<!--All DOM Selectors -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>DOM learning</title>
+    <style>
+      .bg-black {
+        background-color: #212121;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <div>
+      <h1 id="title" class="heading">DOM learningn on chai aur code <span style="display: none;">Get started</span></h1>
+      <input type="password"></input> 
+      <p>Lorem ipsum dolor sit amet</p>
+      <ul>
+        <li>One</li>
+        <li>Two</li>
+        <li>Three</li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<!-- 
+All DOM selectors
+
+
+document.getElementById
+*****
+document.getElementById("title")
+Output--*<h1 id=​"title" class=​"heading">​DOM learningn on chai aur code​</h1>​
+*****
+document.getElementById("title").id
+document.getElementById("title").className
+document.getElementById("title").getAttribute('AtrributeName')
+document.getElementById("title").setAttribute('AtrributeName','AtrributeValue')
+*****
+document.getElementById("title").setAttribute('class','test')
+This command overrides the existing class value.
+*****
+If you want to just add another class then
+document.getElementById("title").setAttribute('class','heading test')
+*****
+To store the element by any selector
+const title=document.getElementById("title")
+*****
+Using this variable
+*****
+title.style.backgroundColor="green"
+'green'
+title.style.padding="15px"
+'15px'
+*****
+To get the text content by the title variable
+*****
+title.textContent
+Output--*'DOM learningn on chai aur code Get started'
+textContent gives all the text content without the HTML tags present inside the code.
+*****
+title.innerHTML
+Output--*'DOM learningn on chai aur code <span style="display: none;">Get started</span>'
+innerHTML gives exact copy of the content along with the HTML tags present inside the code.
+*****
+title.innerText
+Output--*'DOM learningn on chai aur code'
+innertext gives only the visible text content without the HTML tags present inside the code.
+*****
+
+
+document.getElementByClassName
+This is also used similarly like the id selector
+
+document.getElementByName
+document.getElementByTagName
+document.getElementByTagNameNS
+
+
+
+Most used query selector
+*****
+document.querySelector('h1')
+gives the element where h1 is used for the first time.
+*****
+document.querySelector('#title')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+id name is written after giving a #
+*****
+document.querySelector('.heading')
+<h1 id=​"title" class=​"heading">​…​</h1>​
+class name is written after giving a.
+*****
+document.querySelector('input')
+<input type=​"password" fdprocessedid=​"9srd2">​
+CSS selectors can also be used
+*****
+-->
