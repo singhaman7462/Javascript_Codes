@@ -18,9 +18,9 @@
       <input type="password"></input> 
       <p>Lorem ipsum dolor sit amet</p>
       <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
+        <li class="list">One</li>
+        <li class="list">Two</li>
+        <li class="list">Three</li>
       </ul>
     </div>
   </body>
@@ -30,26 +30,27 @@
 All DOM selectors
 
 
-document.getElementById
+
 *****
 document.getElementById("title")
 Output--*<h1 id=​"title" class=​"heading">​DOM learningn on chai aur code​</h1>​
 *****
+HOW TO ACCESS ATTRIBUTES OF AN ELEMENT
 document.getElementById("title").id
 document.getElementById("title").className
 document.getElementById("title").getAttribute('AtrributeName')
+HOW TO SET ATTRIBUTES OF AN ELEMENT
 document.getElementById("title").setAttribute('AtrributeName','AtrributeValue')
 *****
+EXAMPLE TO SET CLASSNAME
 document.getElementById("title").setAttribute('class','test')
 This command overrides the existing class value.
 *****
-If you want to just add another class then
+If you want to just add another class along with existing class i.e. heading.
 document.getElementById("title").setAttribute('class','heading test')
 *****
 To store the element by any selector
 const title=document.getElementById("title")
-*****
-Using this variable
 *****
 title.style.backgroundColor="green"
 'green'
@@ -57,7 +58,6 @@ title.style.padding="15px"
 '15px'
 *****
 To get the text content by the title variable
-*****
 title.textContent
 Output--*'DOM learningn on chai aur code Get started'
 textContent gives all the text content without the HTML tags present inside the code.
@@ -70,11 +70,18 @@ title.innerText
 Output--*'DOM learningn on chai aur code'
 innertext gives only the visible text content without the HTML tags present inside the code.
 *****
-
-
 document.getElementByClassName
 This is also used similarly like the id selector
+document.getElementsByClassName("list")
+Output--*HTMLCollection(3) [li.list, li.list, li.list]
+HTML Collections of all the instances is returned by this query.HTML Collections doesnt even support for each loop and also  not the map funtion.
+So to use those functions we have to cinvert them into arrays.
 
+Mehtod to convert something into array
+Array.from(document.getElementsByClassName("list"))
+Now we will get all the functions of the array.You can store it into a variable
+
+*****
 document.getElementByName
 document.getElementByTagName
 document.getElementByTagNameNS
@@ -98,4 +105,45 @@ document.querySelector('input')
 <input type=​"password" fdprocessedid=​"9srd2">​
 CSS selectors can also be used
 *****
+Any html tag can be used
+const myul=document.querySelector('ul')
+const myli=myul.querySelector('li')
+myli.style.backgroundColor="green"
+'green'
+myli.innerText
+'One'
+*****
+Query Selector only selects the first instance of the query so to select all the instances we use-----
+const templilist=document.querySelectorAll('li')
+templilist
+NodeList(3) [li, li, li]
+
+It returns a nodelist.Its not a pure array.Its prototype provides the for each function but not the map function.
+templilist[1].style.backgroundColor="green"
+'green'
+It works but for the first instance.
+For all instances we can apply the for each loop.
+*****
+
+*****
+Practice Coding
+
+document.querySelectorAll('h3')
+NodeList(3) [h3#Netscape, h3#Mozilla, h3#Brave_Software]0: h3#Netscape1: h3#MozillaaccessKey: ""align: ""ariaAtomic: nullariaAutoComplete: nullariaBrailleLabel: nullariaBrailleRoleDescription: nullariaBusy: nullariaChecked: nullariaColCount: nullariaColIndex: nullariaColIndexText: nullariaColSpan: nullariaCurrent: nullariaDescription: nullariaDisabled: nullariaExpanded: nullariaHasPopup: nullariaHidden: nullariaInvalid: nullariaKeyShortcuts: nullariaLabel: nullariaLevel: nullariaLive: nullariaModal: nullariaMultiLine: nullariaMultiSelectable: nullariaOrientation: nullariaPlaceholder: nullariaPosInSet: nullariaPressed: nullariaReadOnly: nullariaRelevant: nullariaRequired: nullariaRoleDescription: nullariaRowCount: nullariaRowIndex: nullariaRowIndexText: nullariaRowSpan: nullariaSelected: nullariaSetSize: nullariaSort: nullariaValueMax: nullariaValueMin: nullariaValueNow: nullariaValueText: nullassignedSlot: nullattributeStyleMap: StylePropertyMap {size: 0}attributes: NamedNodeMap {0: id, id: id, length: 1}autocapitalize: ""autofocus: falsebaseURI: "https://en.wikipedia.org/wiki/Brendan_Eich"childElementCount: 0childNodes: NodeList [text]children: HTMLCollection []classList: DOMTokenList [value: '']className: ""clientHeight: 0clientLeft: 0clientTop: 0clientWidth: 0contentEditable: "inherit"currentCSSZoom: 1dataset: DOMStringMap {}dir: ""draggable: falseeditContext: nullelementTiming: ""enterKeyHint: ""firstChild: textfirstElementChild: nullhidden: falseid: "Mozilla"inert: falseinnerHTML: "Mozilla"innerText: "Mozilla"inputMode: ""isConnected: trueisContentEditable: falselang: ""lastChild: textlastElementChild: nulllocalName: "h3"namespaceURI: "http://www.w3.org/1999/xhtml"nextElementSibling: span.mw-editsectionnextSibling: span.mw-editsectionnodeName: "H3"nodeType: 1nodeValue: nullnonce: ""offsetHeight: 120offsetLeft: 0offsetParent: div#bodyContent.vector-body.ve-init-mw-desktopArticleTarget-targetContaineroffsetTop: 39799offsetWidth: 358onabort: nullonanimationend: nullonanimationiteration: nullonanimationstart: nullonauxclick: nullonbeforecopy: nullonbeforecut: nullonbeforeinput: nullonbeforematch: nullonbeforepaste: nullonbeforetoggle: nullonbeforexrselect: nullonblur: nulloncancel: nulloncanplay: nulloncanplaythrough: nullonchange: nullonclick: nullonclose: nulloncontentvisibilityautostatechange: nulloncontextlost: nulloncontextmenu: nulloncontextrestored: nulloncopy: nulloncuechange: nulloncut: nullondblclick: nullondrag: nullondragend: nullondragenter: nullondragleave: nullondragover: nullondragstart: nullondrop: nullondurationchange: nullonemptied: nullonended: nullonerror: nullonfocus: nullonformdata: nullonfullscreenchange: nullonfullscreenerror: nullongotpointercapture: nulloninput: nulloninvalid: nullonkeydown: nullonkeypress: nullonkeyup: nullonload: nullonloadeddata: nullonloadedmetadata: nullonloadstart: nullonlostpointercapture: nullonmousedown: nullonmouseenter: nullonmouseleave: nullonmousemove: nullonmouseout: nullonmouseover: nullonmouseup: nullonmousewheel: nullonpaste: nullonpause: nullonplay: nullonplaying: nullonpointercancel: nullonpointerdown: nullonpointerenter: nullonpointerleave: nullonpointermove: nullonpointerout: nullonpointerover: nullonpointerrawupdate: nullonpointerup: nullonprogress: nullonratechange: nullonreset: nullonresize: nullonscroll: nullonscrollend: nullonscrollsnapchange: nullonscrollsnapchanging: nullonsearch: nullonsecuritypolicyviolation: nullonseeked: nullonseeking: nullonselect: nullonselectionchange: nullonselectstart: nullonslotchange: nullonstalled: nullonsubmit: nullonsuspend: nullontimeupdate: nullontoggle: nullontransitioncancel: nullontransitionend: nullontransitionrun: nullontransitionstart: nullonvolumechange: nullonwaiting: nullonwebkitanimationend: nullonwebkitanimationiteration: nullonwebkitanimationstart: nullonwebkitfullscreenchange: nullonwebkitfullscreenerror: nullonwebkittransitionend: nullonwheel: nullouterHTML: "<h3 id=\"Mozilla\">Mozilla</h3>"outerText: "Mozilla"ownerDocument: documentparentElement: div.mw-heading.mw-heading3parentNode: div.mw-heading.mw-heading3part: DOMTokenList [value: '']popover: nullprefix: nullpreviousElementSibling: nullpreviousSibling: nullrole: nullscrollHeight: 0scrollLeft: 0scrollTop: 0scrollWidth: 0shadowRoot: nullslot: ""spellcheck: truestyle: CSSStyleDeclaration {accentColor: '', additiveSymbols: '', alignContent: '', alignItems: '', alignSelf: '', …}tabIndex: -1tagName: "H3"textContent: "Mozilla"title: ""translate: truevirtualKeyboardPolicy: ""writingSuggestions: "true"[[Prototype]]: HTMLHeadingElement(...)2: h3#Brave_Softwarelength: 3[[Prototype]]: NodeList
+const h2List=document.querySelectorAll('h2')
+h2List
+NodeList(5) [h2.vector-pinnable-header-label, h2#Early_life, h2#Career, h2#References, h2#External_links]0: h2.vector-pinnable-header-label1: h2#Early_life2: h2#Career3: h2#References4: h2#External_linkslength: 5[[Prototype]]: NodeList
+h2List.forEach((h2)=>{
+   console.log(h2.innerText);
+})
+VM1024:2 Contents
+VM1024:2 Early life
+VM1024:2 Career
+VM1024:2 References
+VM1024:2 External links
+undefined
+h2List.forEach((h2)=>{
+   h2.style.backgroundColor="green";
+})
+ *****
 -->
