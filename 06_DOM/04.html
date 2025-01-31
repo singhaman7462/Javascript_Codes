@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code | DOM</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+  <ul class="language">
+      <li>Javascript</li>
+  </ul>  
+</body>
+<script>
+    //TO add an eleemnt
+    function addLanguage(langName){
+         const myList=document.querySelector('.language');
+         const addText=document.createTextNode(langName);
+         const listItem=document.createElement("li");
+         listItem.appendChild(addText);
+         myList.appendChild(listItem);
+    }
+    addLanguage("Python");
+    addLanguage("CPP");
+    addLanguage("HTML");
+    addLanguage("Typescript");
+
+    //To edit an element
+    function editLanguage(langName){
+        const secondLang=document.querySelector('li:nth-child(2)');
+        //Best practice to create a new element.Dont use innerHTML in large cases.OuterHTML is also a method but should not be used.
+        const newListItem=document.createElement("li");
+        newListItem.appendChild(document.createTextNode(langName));
+        //The main method to edit
+        secondLang.replaceWith(newListItem);
+    }
+
+    editLanguage("MATLAB");
+
+    //TO remove an element
+    function removeLanguage(){
+        const lastLang=document.querySelector('li:last-child');
+        lastLang.remove();
+    }
+
+    removeLanguage();
+</script>
+</html>
+
+
+
+<!-- 
+Edit and Remove DOM elemnets
+********************
+Adding elements in DOM
+-> function addLanguage(langName){
+         const myList=document.querySelector('.language');
+         const addText=document.createTextNode(langName);
+         const listItem=document.createElement("li");
+         listItem.appendChild(addText);
+         myList.appendChild(listItem);
+    }
+->  addLanguage("Python");
+In this code we first take the reference of the elemtn in which we have to add the new child.Then we create the child and we append it.
+But innerHTML method is not feasible as it has to traverse the entire list items to add an item.So follow the above mentioned method.
+->->->So preffered method is append child.
+************
+
+Removing elements from DOM
+
+-->
