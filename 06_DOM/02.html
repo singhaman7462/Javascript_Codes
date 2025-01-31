@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Chai aur code</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<script>
+   const parent=document.querySelector(".parent")
+   console.log(parent);
+   console.log(parent.children);
+//    for (let index = 0; index < parent.children.length; index++) {
+//     console.log(parent.children[index].innerHTML);  
+//    }
+   parent.children[1].style.color="orange";
+//    console.log(parent.firstElementChild);
+//    console.log(parent.lastElementChild);
+
+//    const day1=document.querySelector(".day");
+//    console.log(day1.innerHTML);
+//    console.log(day1.parentElement);
+//    console.log(day1.nextElementSibling);
+
+console.log("Nodes->",parent.childNodes);
+</script>
+</html>
+
+
+
+
+<!-- 
+How to create a new element in dom?
+
+******
+given class xyz to an element you can access that using
+->const parent=document.querySelector(".xyz")
+*****
+Now to access its children tags 
+->console.log(parent.children);
+returns an HTML collection of all the children tags so 
+*****
+can be used like an array.
+ for (let index = 0; index < parent.children.length; index++) {
+    console.log(parent.children[index].innerHTML);  
+   }
+*****
+can do numerous things
+->parent.children[1].style.color="orange";
+can access the children directly.
+->console.log(parent.firstElementChild);
+->console.log(parent.lastElementChild);
+returns the entire tag.
+*****
+can access parent from children also
+->const day1=document.querySelector(".day");
+->console.log(day1.innerHTML);
+->console.log(day1.parentElement);
+returns the entire parent tag(entire div)
+*****
+can access the siblings also
+->console.log(day1.nextElementSibling);
+*****
+
+
+*****
+NODELIST
+The entire node structure of the parent
+->console.log("Nodes->",parent.childNodes);
+-> OUTPUT <-
+NodeList(9) [text, div.day, text, div.day, text, div.day, text, div.day, text]0: text1: div.day2: text3: div.day4: text5: div.day6: text7: div.day8: textlength: 9[[Prototype]]: NodeList
+-> OUTPUT <-
+Despite having only four children it shows 9 nodes.This is complex behind the scenes as the browser creates a node even for a line break in code.
+*****
+-->
