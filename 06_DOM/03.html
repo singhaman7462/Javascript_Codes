@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur Code</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+<script>
+ const div=document.createElement("div");
+ console.log(div);
+ div.className="main";
+ div.id="myDiv";
+
+ div.setAttribute("title","Any title")
+ div.style.backgroundColor="green"
+ div.style.padding="12px"
+//  div.innerText="Chai aur code"
+
+ const addText=document.createTextNode("Chai aur code")
+ div.appendChild(addText)
+
+ document.body.appendChild(div);
+</script>
+</html>
+
+
+
+
+<!--
+How to create a new  elemrnt in DOM?
+*****
+Method to create the element
+->const div=document.createElement("div");
+
+Method to add properties of an eleemnt
+->div.className="main";
+->div.id="myDiv";
+->div.setAttribute("title","Any title")
+->div.style.backgroundColor="green"
+->div.style.padding="12px"
+*****
+So we can attribute by two methods
+1)div.className="main";
+2)div.setAttribute("title","Any title")
+It is said that method 2 is better as in method 1 it overrides the value so first it takes the reference then set the value.So it takes two steps.
+while method 2 directly set the value of the given attribute.
+
+to write an innerhtml we have two methods
+1)div.innerText="Chai aur code"
+this method first takes the reference and then set the values
+2)->const addText=document.createTextNode("Chai aur code")
+ ->div.appendChild(addText)
+
+
+
+*****
+Right now this div wont be shown in the page as it is only created in the memory but not added to the document.so to add this to the document :-
+->->document.body.appendChild(div);
+can be done for more than 1 child also by loops or anything.
+
+-->
