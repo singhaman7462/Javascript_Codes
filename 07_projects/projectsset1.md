@@ -80,6 +80,43 @@ form.addEventListener('submit', function (e) {
 });
 
 
+
+
+
+
+//My solution
+
+
+//need to select form ,body wont work as the event is a submit butn especislly in a form
+const myForm = document.querySelector('form');
+
+//A form when submitted it follows get or post and goes on server oor url.But we have to stop that default action as we are performing the calculation in frontend.
+myForm.addEventListener('submit', function (event) {
+  //Prevevnting default action
+  event.preventDefault();
+  //Get the height and weight  entered by the user.Only access these values after the avent has been triggered
+  const height = parseFloat(document.querySelector('#height').value);
+  const weight = parseFloat(document.querySelector('#weight').value);
+  const results = document.querySelector('#results');
+
+  //Need to check if user has enetered the correct value or else the calculation will give an error.
+  if (height === '' || height < 0 || isNaN(height)) {
+    results.innerHTML = `Please enter a valid height`;
+  } else if (weight === '' || weight < 0 || isNaN(weight)) {
+    results.innerHTML = `Please enter a valid weight`;
+  } else {
+    const bmi = (weight / (height * height)).toFixed(2);
+    let msg = 'Congratulations you are in normal range';
+    if (bmi < 18.6) {
+      msg = 'You are underweight';
+    } else if (bmi > 24.9) {
+      msg = 'You are overweight';
+    }
+    results.innerHTML = `<span>bmi=${bmi} -> ${msg}<span>`;
+  }
+});
+//end of the code
+
 ```
 
 ## project 3 solution code
