@@ -132,6 +132,28 @@ setInterval(function () {
 }, 1000);
 
 
+
+
+
+//My solution
+const clock = document.querySelector('#clock');
+
+// let myDate = new Date();
+// let time = myDate.toLocaleTimeString();
+// clock.innerHTML = `${time}`;
+//This time will only change on refresh or reload but we want it to change every second.
+
+//So to update it dynamically
+// Use setInterval() method, it takes a function and run it again and again after a given time interval.
+//setInterval(function,time in ms)
+
+setInterval(() => {
+  let myDate = new Date();
+  let time = myDate.toLocaleTimeString();
+  clock.innerHTML = `${time}`;
+}, 1000);
+//end 
+
 ```
 
 ## project 4 solution
