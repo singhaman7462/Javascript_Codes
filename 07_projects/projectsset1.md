@@ -254,6 +254,52 @@ function newGame() {
 }
 
 
+
+
+
+
+//My solution
+
+const number = Math.floor(Math.random() * 100 + 1);
+let count = 0;
+const myForm = document.querySelector('form');
+const wrap = document.querySelector('#wrapper');
+const div = document.createElement('div');
+const addText = document.createTextNode(
+  'Please enter a number between 1 to 100'
+);
+div.appendChild(addText);
+wrap.appendChild(div);
+let guesses = '';
+myForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const guess = parseInt(document.querySelector('#guessField').value);
+  if (guesses === '') guesses += guess;
+  else guesses += ', ' + guess;
+  const prevGuesses = document.querySelector('.guesses');
+  prevGuesses.innerHTML = guesses;
+  if (count >= 10) {
+    div.innerHTML = `Sorry you could not guess the ${number} correctly within the guess limit.`;
+  } else if (guess < 1 || guess > 100 || isNaN(guess)) {
+    div.innerHTML = 'This is not a valid number.Try again';
+  } else if (guess == number) {
+    div.innerHTML = `Congratulations you have guessed the ${number} correctly.`;
+  } else {
+    guess > number
+      ? (div.innerHTML = `Wrong guess.Try a lower number`)
+      : (div.innerHTML = `Wrong guess.Try a higher number`);
+  }
+  count++;
+  const remainingGuesses = document.querySelector('.lastResult');
+  const newSpan = document.createElement('span');
+  const spanText = document.createTextNode(10 - count);
+  newSpan.appendChild(spanText);
+  newSpan.className = 'lastResult';
+  remainingGuesses.replaceWith(newSpan);
+});
+
+
 ```
 
 
