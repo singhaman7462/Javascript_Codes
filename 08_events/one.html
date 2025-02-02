@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+//Javascript events
+/*
+*****
+ ->In javascript most of the events run sequentially but it has a few exceptions.
+ ->JS is a sequentially run language.Exceptions to this are the browser events.This are only invoked on some events like click ,drag,press not by writing in the code file.
+*****
+IN js injecting event handlers directlu=y in HTML is not feasible in the terms of scalability but it is feasible in react.
+***** 
+*/
+
+// ******
+// So the feasible approach to add a event listener to a tag
+// document.getElementById('owl').onclick=function(){
+//     alert('Owl Clicked');
+// }
+//******
+
+
+// It doesnt give more features so we should use event listeners which give vast range of features.
+
+document.getElementById('owl').addEventListener('click',(event)=>{
+console.log(event);
+},false);
+
+//Third parameter is defalut false so it is not needed.
+//But why this third parameter is used generally?It decides the event propagation
+// Event propagation has two contexts->Event BUbbling and Event capturing.False is event buubbling
+
+
+
+
+
+
+//THe most necessaary part is to read about event object you get by the event listener
+//Event provides a lots of information regarding the event like the location where it is clicked,time when it happened,and many more .search about it on net.
+//To study -> type,timestamp,defalutPrevented,target,toElement,srcElement,currentTarget,clientX,clientY,screenX,screenY,altKey,ctrlKey,shiftKey,keyCode
+
+
+//Third Method attachEvent()
+//jQuery onClick
+
+</script>
+</html>
