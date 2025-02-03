@@ -23,7 +23,7 @@
 /*
 *****
  ->In javascript most of the events run sequentially but it has a few exceptions.
- ->JS is a sequentially run language.Exceptions to this are the browser events.This are only invoked on some events like click ,drag,press not by writing in the code file.
+ ->JS is a sequentially run language.Exceptions to this are the browser events.This are only invoked on some events like click ,drag,press and not by writing in the code file.
 *****
 IN js injecting event handlers directlu=y in HTML is not feasible in the terms of scalability but it is feasible in react.
 ***** 
@@ -39,17 +39,38 @@ IN js injecting event handlers directlu=y in HTML is not feasible in the terms o
 
 // It doesnt give more features so we should use event listeners which give vast range of features.
 
-document.getElementById('owl').addEventListener('click',(event)=>{
-console.log(event);
-},false);
+// document.getElementById('owl').addEventListener('click',(event)=>{
+// console.log(event);
+// },false);
 
 //Third parameter is defalut false so it is not needed.
 //But why this third parameter is used generally?It decides the event propagation
-// Event propagation has two contexts->Event BUbbling and Event capturing.False is event buubbling
+// Event propagation has two contexts->Event BUbbling and Event capturing.Default case i.e. False is for event buubbling
+
+// document.getElementById('images').addEventListener('click',(event)=>{
+// console.log("clicked inside the ul");
+// },false);
+
+// document.getElementById('owl').addEventListener('click',(event)=>{
+// console.log("owl clicked");
+// event.stopPropagation();
+// },false);
 
 
+// IN the above case if the owl is clicked then it comes under nboth the event listenerrs.So which event listener will be activated first.
+//Output-->owl clicked
+//         clicked inside the ul
+// So the rule is event bubbling that it goes like bubble from inside to outside so the inner event listener is activated first. Here li comes inside the ul so first li listener is actibated.This is the default case./
+// If you want to sstop the event bubblingg then 
+// event.stopPropagation();
 
+// Event Capturing
+// The other case is event capturing .For this we have to set the third parameter true.IN this case the outer element is listened first.
 
+document.getElementById("google").addEventListener('click',function(event){
+// console.log('google clicked');
+event.preventDefault();
+});
 
 
 //THe most necessaary part is to read about event object you get by the event listener
@@ -60,5 +81,28 @@ console.log(event);
 //Third Method attachEvent()
 //jQuery onClick
 
+
+
+
+
+// Task:TO hide the clicked image.
+// document.getElementById('images').addEventListener('click',(event)=>{
+// document.getElementById(event.target.id).hidden=true;
+// },false);
+
+//Task to remove the entire li whose image is clicked
+document.getElementById('images').addEventListener('click',(event)=>{
+const liToRemove=event.target.parentNode;
+//The parent of clicked image is the li in which it is present
+//now to remove it
+if(liToRemove.tagName=='LI')
+liToRemove.remove();
+else
+event.target.remove();
+},false);
+
+//In the above method clicking near the google is removing the entire ul because google is not an image the area near it comes under the li.So the parent of google li is ul and hence the entire ul got removeed.
+
+//We can apply strict check to prevent this
 </script>
 </html>
