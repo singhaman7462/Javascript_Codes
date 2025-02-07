@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="stopit">Stop</button>
+</body>
+<script>
+    const printSomething=function(){
+       console.log("Print after 5 secs");
+    }
+    setTimeout(printSomething,5000);
+    // ->A function which is  not from core js but is provided by browser.It iomplements the function given after the given time and only once.
+
+
+    // setInterval(printSomething,1000);
+    //Same as settimeout but the main diff is it executes the given function again and again after the given time.
+
+    
+    //Want to change some text after 2 secs
+    const changeMe=setTimeout(()=>{
+        document.querySelector('h1').innerHTML="Aman Singh";
+    },3000);
+
+
+    // Want to stop the timeout or timeinterval event.
+    document.querySelector('#stopit').addEventListener('click',()=>{
+       clearTimeout(changeMe);
+       console.log("stopped");
+       
+    });
+    //Since to stop a timeout we have to pass the reference of that particular timeout int the clear timeout so we stored the reference of that timeout.
+     
+</script>
+</html>
