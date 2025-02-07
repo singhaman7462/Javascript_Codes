@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur javascript</h1>
+    <button id="startit">Start</button>
+    <button id="stopit">Stop</button>
+</body>
+<script>
+    const printSomething=function(str){
+            console.log(str+' '+Date.now());
+    }
+    let startPrinting;
+//Since if we declare the reference inside the function then it cant be accessed in other functiom so it was declared outside.
+   document.querySelector('#startit').addEventListener('click',()=>{
+    startPrinting=setInterval(printSomething,'1000',"hello");
+   }
+   )
+   //setINterval method also accepts  a third parameter that is the argumetn for its handler.
+
+   document.querySelector('#stopit').addEventListener('click',()=>{
+    clearInterval(startPrinting);
+   }
+   )
+     
+</script>
+</html>
