@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121;">
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+<button id="getDetails"> Get User Details</button>
+<div id="main">
+    
+</div>
+</body>
+<script>
+    const url="https://api.github.com/users/hiteshchoudhary"
+    const cardDiv=document.getElementById('main');
+    const imageT=document.createElement('img');
+    imageT.setAttribute('id','myImage');
+    const para=document.createElement('p');
+    para.setAttribute('id','myFollowers');
+    para.style.color='white';
+    let data='';
+    let imgurl='';
+
+
+    //How to do a API request using XMLHTTP
+    //First we need an object XMLHttpRequest()
+   const xhr=new XMLHttpRequest();
+
+   //THen we have to make a open call.Its a method to hit the api
+   xhr.open('GET',url);
+   
+   //States of the requst change at every level we can track the state change.
+   xhr.onreadystatechange=function(){
+    console.log(xhr.readyState);
+    if(xhr.readyState===4){
+        data=this.responseText;
+    }
+    //Prints the response got from api.Cant access the response outside this function
+    //Cant access the respinse text properties directly like a json as it is string.So we have to parse it in a json.
+   }
+    //THis functiin  is executed every time the state changes.It is async prog.
+
+
+    
+   document.querySelector('#getDetails').addEventListener('click',()=>{
+
+    if(data!==''){
+    data=JSON.parse(data);
+    imgurl=data.avatar_url
+    imageT.setAttribute('src',imgurl);
+    imageT.setAttribute('height','100px');
+    imageT.setAttribute('weight','100px');
+    cardDiv.appendChild(imageT);
+    para.innerHTML=`Followers Count:${data.followers}`;
+    cardDiv.appendChild(para);
+    }
+   })
+    
+   //Only open() is not enough we have to send the request
+   xhr.send();
+</script>
+</html>
