@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>Button Clicked</button>
+</body>
+<script>
+    class React{
+        constructor(){
+            this.library="React"
+            this.server="https://localhost:3000"
+
+            //Requirement ->As the button is clicked it should print details in console
+        
+            document.querySelector('button').addEventListener('click',this.handleClick.bind(this));
+            //this.handleClick.bind(this)-> Now after binding it will  not only have the reference of funcn caller but also the current this context where this is getting defined.
+        }
+
+        handleClick(){
+            console.log('Button clicked');
+            console.log(this.library);
+        }
+    }
+    
+    //Create an object to get the constructor access  and all the variables and methods accesss
+    const newReact=new React();
+
+    //Button clicked is logged but this.library is not logged. Why?
+    //Reference of button is passed to the method but not the variables
+    //To pass the reference of the variables also you have to explicitly bind the this so that it has the current context as well as the context of function caller.
+
+</script>
+</html>
