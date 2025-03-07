@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+</body>
+<script>
+//CLOSURE and LEXICAL SCOPING
+
+
+//Lexical Scoping
+
+    //If variables are declared inside a function then you wont get their access outside that funcn.
+    //But you can get the access of the variable in the fy=unction present inside that function
+
+    function init() {
+      let name = "Mozilla"; // name is a local variable created by init
+      function displayName() {
+        // displayName() is the inner function, that forms a closure
+        console.log(name); // use variable declared in the parent function
+      }
+      displayName();
+    }
+
+    //Every inner funcn gets the access to the variables of the outer fucntion.
+    //Inner funcns cant get the access to other inner funcn variables
+    init();
+//***************************************************************
+
+
+//Closure
+function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
+  }
+  return displayName;
+  //Reference of inner funcn is returned .
+}
+
+//Here the problem is that when the outer function is called its context is created which has all the variables which can be accessed by the inner function but since it is returning the inner function so once it returns the outer call is completed and its context is removed so how the inner function will access the variables of outer functiuon. 
+
+
+//This problem is soved by the closure. Closure states that when a function is returned then along with the function the entire lexical scope of the function is returnd=ed.So the outer function context is also maintained in the memory.
+
+const myFunc = makeFunc();
+myFunc();
+
+
+
+</script>
+
+<script>
+// document.getElementById('orange').onclick=function(){
+//     document.body.style.backgroundColor="orange";
+// }
+
+// document.getElementById('green').onclick=function(){
+//     document.body.style.backgroundColor="green";
+// }
+
+//THis is working but what if i have many buttons so i have to write on click handler for all
+
+
+
+//Real world example
+
+// function clickHandler(color){
+//     document.body.style.backgroundColor=`${color}`;
+// }
+
+// document.getElementById('green').onclick=clickHandler("green");
+//onclick demand a fully executable function so it wont work e=with reference 
+//But giveing clickHandler("green"); gets it executed even before the click so this doesn't work as intended 
+
+//To onclick we must provide the definition of an executable function
+
+
+ function clickHandler(color){
+    
+
+    return function(){
+        document.body.style.backgroundColor=`${color}`;
+    }
+}
+
+document.getElementById('green').onclick=clickHandler("green");
+document.getElementById('orange').onclick=clickHandler("orange");
+
+//THis function works as intended as the function which gets automatically executaed due to passing to onclick is the clickhandler and the color change is done only by the inner function.
+
+//It works because of lexical scoping and closure as the inner function has the access of color.
+
+
+</script>
+</html>
